@@ -82,9 +82,9 @@
 		request.onreadystatechange = function() {
 			var accountInfo = JSON.parse(request.responseText)
 			document.getElementById('content').innerHTML = '<h1 id="btcAddress">' + accountInfo.account + '</h1><h2>'
-				+ accountInfo.balance + ' BTC (<a href="./?sellBtc=' + accountInfo.balance + '">EUR</a>)</h2>Created:<p>'
-				+ accountInfo.first_seen_human_time + '</p>Sent:<p>' + accountInfo.sent + ' BTC (<a href="./?sellBtc=' + accountInfo.sent
-				+ '">EUR</a>)</p>Received:<p>' + accountInfo.received + ' BTC (<a href="./?sellBtc=' + accountInfo.received + '">EUR</a>)</p>';
+				+ accountInfo.balance + ' BTC (<a href="./?convert=' + accountInfo.balance + '&action=sellBtc">EUR</a>)</h2>Created:<p>'
+				+ accountInfo.first_seen_human_time + '</p>Sent:<p>' + accountInfo.sent + ' BTC (<a href="./?convert=' + accountInfo.sent
+				+ '&action=sellBtc">EUR</a>)</p>Received:<p>' + accountInfo.received + ' BTC (<a href="./?convert=' + accountInfo.received + '&action=sellBtc">EUR</a>)</p>';
 			document.getElementById('btcAddress').onclick = function() {
 					document.getElementById('content').innerHTML = '<br><br><form action="/." method="GET">'
 						+ '<input type="text" name="address" size="36" autofocus></input> <button type="submit">Check</button></form>';	
