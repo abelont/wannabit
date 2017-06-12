@@ -78,16 +78,16 @@
 		document.getElementById('content').innerHTML = "<h1>Address info</h1><br><br>Loading..."
 		address = param.replace('address=', '');
 		var request = new XMLHttpRequest();
-		request.open('GET', 'http://webcodesign.de/api/blockchain/?' + address);
+		request.open('GET', 'https://webcodesign.de/api/blockchain/?' + address);
 		request.onreadystatechange = function() {
 			var accountInfo = JSON.parse(request.responseText)
-			document.getElementById('content').innerHTML = '<h1>' + accountInfo.account + '</h1><h2 id="btcAddress">'
+			document.getElementById('content').innerHTML = '<h1 id="btcAddress">' + accountInfo.account + '</h1><h2>'
 				+ accountInfo.balance + ' BTC (<a href="./?sellBtc=' + accountInfo.balance + '">EUR</a>)</h2>Created:<p>'
 				+ accountInfo.first_seen_human_time + '</p>Sent:<p>' + accountInfo.sent + ' BTC (<a href="./?sellBtc=' + accountInfo.send
 				+ '">EUR</a>)</p>Received:<p>' + accountInfo.received + ' BTC (<a href="./?sellBtc=' + accountInfo.received + '">EUR</a>)</p>';
 			document.getElementById('btcAddress').onclick = function() {
 					document.getElementById('content').innerHTML = '<br><br><form action="/." method="GET">'
-						+ '<input type="text" name="address" size="36" autofocus></input><button type="submit">Check</button></form>';	
+						+ '<input type="text" name="address" size="36" autofocus></input> <button type="submit">Check</button></form>';	
 			};
 		}
 		request.send();
@@ -96,7 +96,7 @@
 		document.getElementById('content').innerHTML = '<h1>Conversion</h1><br><br>Loading...';
 		var request = new XMLHttpRequest();
 		if(param.indexOf('buyBtc') !== -1) {
-			request.open('GET', 'http://webcodesign.de/api/bitonic/?prices&buy=' + value);
+			request.open('GET', 'https://webcodesign.de/api/bitonic/?prices&buy=' + value);
 			request.onreadystatechange = function() {
 				var valueInfo = JSON.parse(request.responseText)
 				document.getElementById('content').innerHTML = '<h1>Conversion</h1><h2 id="eurValue">' + valueInfo.buy.euro
@@ -108,7 +108,7 @@
 			}
 			request.send();
 		} else if(param.indexOf('buyEur') !== -1) {
-			request.open('GET', 'http://webcodesign.de/api/bitonic/?prices&buy=' + value + '&euro');
+			request.open('GET', 'https://webcodesign.de/api/bitonic/?prices&buy=' + value + '&euro');
 			request.onreadystatechange = function() {
 				var valueInfo = JSON.parse(request.responseText)
 				document.getElementById('content').innerHTML = '<h1>Conversion</h1><h2 id="btcValue">' + valueInfo.buy.btc
@@ -120,7 +120,7 @@
 			}
 			request.send();
 		} else if(param.indexOf('sellBtc') !== -1) {
-			request.open('GET', 'http://webcodesign.de/api/bitonic/?prices&sell=' + value);
+			request.open('GET', 'https://webcodesign.de/api/bitonic/?prices&sell=' + value);
 			request.onreadystatechange = function() {
 				var valueInfo = JSON.parse(request.responseText)
 				document.getElementById('content').innerHTML = '<h1>Conversion</h1><h2 id="eurValue">' + valueInfo.sell.euro
@@ -132,7 +132,7 @@
 			}
 			request.send();
 		} else if(param.indexOf('sellEur') !== -1) {
-			request.open('GET', 'http://webcodesign.de/api/bitonic/?prices&sell=' + value + '&euro');
+			request.open('GET', 'https://webcodesign.de/api/bitonic/?prices&sell=' + value + '&euro');
 			request.onreadystatechange = function() {
 				var valueInfo = JSON.parse(request.responseText)
 				document.getElementById('content').innerHTML = '<h1>Conversion</h1><h2 id="btcValue">' + valueInfo.sell.btc
@@ -147,7 +147,7 @@
 	} else if(param.endsWith('rates')) {
 		var request = new XMLHttpRequest();
 		document.getElementById('content').innerHTML = "<h1>Rates</h1><br><br>Loading..."
-		request.open('GET', 'http://webcodesign.de/api/bitonic/?rates');
+		request.open('GET', 'https://webcodesign.de/api/bitonic/?rates');
 		request.onreadystatechange = function() {
 			var rateInfo = JSON.parse(request.responseText);
 			document.getElementById('content').innerHTML = '<h1>Rates</h1><p>For 1 BTC</p><h2>Buy</h2><p>Low: ' + rateInfo.buy.low + ' EUR/BTC</p><p>High: ' + rateInfo.buy.high
