@@ -159,12 +159,12 @@
 		+ 'Bitcoin Address: <input type="text" name="address" size="36" autofocus></input> <button type="submit">Check</button></form>';
 	} else if(param.endsWith('convert')) {
 		document.getElementById('content').innerHTML =
-		'<h1>Conversion</h1><form action="/" method="GET">Value: <input type="text" name="convert" autofocus> BTC/EUR<br><br>'
+		'<h1>Conversion</h1><form action="./" method="GET">Value: <input type="text" name="convert" autofocus> BTC/EUR<br><br>'
 		+ '<button type="submit" name="action" value="buyBtc">Buy BTC</button> <button type="submit" name="action" value="buyEur">Buy EUR</button> '
 		+ '<button type="submit" name="action" value="sellBtc">Sell BTC</button> <button type="submit" name="action" value="sellEur">Sell EUR</button>';
 	} else if(param == '') {
 		document.getElementById('content').innerHTML = '<h1>Home</h1><br><h3><a href="./?address">Bitcoin address info</a></h3><br>'
-		+ '<h3><a href="/?convert">Bitcoin conversion</a></h3><br><h3><a href="./?rates">Bitcoin rates</a></h3>';
+		+ '<h3><a href="./?convert">Bitcoin conversion</a></h3><br><h3><a href="./?rates">Bitcoin rates</a></h3>';
 	} else {
 		document.getElementById('content').innerHTML = '<p>Page not found.</p>';
 	}
