@@ -3,7 +3,7 @@
 <head>
 	<title>WannaBit</title>
 	<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
-	<link href='favicon.ico' rel='icon' type='image/x-icon'>
+	<link href='./favicon.ico' rel='icon' type='image/x-icon'>
 	<style>
 		body {	
 			margin: 0;
@@ -65,8 +65,8 @@
 </head>
 <body>
 	<div class="nav">
-		<span id="title">WannaBit</span><a href="/" class="item">Home</a><a href="/?address" class="item">Address info</a><!--
-		--><a href="/?convert" class="item">Conversion</a><a href="/?rates" class="item">Rates</a>
+		<span id="title">WannaBit</span><a href="./" class="item">Home</a><a href="./?address" class="item">Address info</a><!--
+		--><a href="./?convert" class="item">Conversion</a><a href="./?rates" class="item">Rates</a>
 	</div>
 	<center>
 		<div id='content'>
@@ -82,11 +82,11 @@
 		request.onreadystatechange = function() {
 			var accountInfo = JSON.parse(request.responseText)
 			document.getElementById('content').innerHTML = '<h1>' + accountInfo.account + '</h1><h2 id="btcAddress">'
-				+ accountInfo.balance + ' BTC (<a href="/?sellBtc=' + accountInfo.balance + '">EUR</a>)</h2>Created:<p>'
-				+ accountInfo.first_seen_human_time + '</p>Sent:<p>' + accountInfo.sent + ' BTC (<a href="/?sellBtc=' + accountInfo.send
-				+ '">EUR</a>)</p>Received:<p>' + accountInfo.received + ' BTC (<a href="/?sellBtc=' + accountInfo.received + '">EUR</a>)</p>';
+				+ accountInfo.balance + ' BTC (<a href="./?sellBtc=' + accountInfo.balance + '">EUR</a>)</h2>Created:<p>'
+				+ accountInfo.first_seen_human_time + '</p>Sent:<p>' + accountInfo.sent + ' BTC (<a href="./?sellBtc=' + accountInfo.send
+				+ '">EUR</a>)</p>Received:<p>' + accountInfo.received + ' BTC (<a href="./?sellBtc=' + accountInfo.received + '">EUR</a>)</p>';
 			document.getElementById('btcAddress').onclick = function() {
-					document.getElementById('content').innerHTML = '<br><br><form action="/" method="GET">'
+					document.getElementById('content').innerHTML = '<br><br><form action="/." method="GET">'
 						+ '<input type="text" name="address" size="36" autofocus></input><button type="submit">Check</button></form>';	
 			};
 		}
@@ -102,7 +102,7 @@
 				document.getElementById('content').innerHTML = '<h1>Conversion</h1><h2 id="eurValue">' + valueInfo.buy.euro
 					+ ' EUR</h2><p id="btcValue">' + valueInfo.buy.btc + ' BTC</p><p>BTC Buy Rate: ' + valueInfo.buy.rate + ' EUR</p>';
 				document.getElementById('btcValue').onclick = function() {
-						document.getElementById('content').innerHTML = '<h1>Conversion</h1><br><br><form action="/" method="GET">'
+						document.getElementById('content').innerHTML = '<h1>Conversion</h1><br><br><form action="./" method="GET">'
 							+ 'Value: <input type="text" name="convert" autofocus></input> BTC <button type="submit" name="action" value="buyBtc">Check</button></form>';		
 				};
 			}
@@ -114,7 +114,7 @@
 				document.getElementById('content').innerHTML = '<h1>Conversion</h1><h2 id="btcValue">' + valueInfo.buy.btc
 					+ ' BTC</h2><p id="eurValue">' + valueInfo.buy.euro + ' EUR</p><p>EUR Buy Rate: ' + valueInfo.buy.rate + ' BTC</p>';
 				document.getElementById('eurValue').onclick = function() {
-						document.getElementById('content').innerHTML = '<h1>Conversion</h1><br><br><form action="/" method="GET">'
+						document.getElementById('content').innerHTML = '<h1>Conversion</h1><br><br><form action="./" method="GET">'
 							+ 'Value: <input type="text" name="convert" autofocus></input> EUR <button type="submit" name="action" value="buyEur">Check</button></form>';	
 				};
 			}
@@ -126,7 +126,7 @@
 				document.getElementById('content').innerHTML = '<h1>Conversion</h1><h2 id="eurValue">' + valueInfo.sell.euro
 					+ ' EUR</h2><p id="btcValue">' + valueInfo.sell.btc + ' BTC</p><p>BTC Sell Rate: ' + valueInfo.sell.rate + ' EUR</p>';
 				document.getElementById('btcValue').onclick = function() {
-						document.getElementById('content').innerHTML = '<h1>Conversion</h1><br><br><form action="/" method="GET">'
+						document.getElementById('content').innerHTML = '<h1>Conversion</h1><br><br><form action="./" method="GET">'
 							+ 'Value: <input type="text" name="convert" autofocus></input> BTC <button type="submit" name="action" value="sellBtc">Check</button></form>';	
 				};
 			}
@@ -138,7 +138,7 @@
 				document.getElementById('content').innerHTML = '<h1>Conversion</h1><h2 id="btcValue">' + valueInfo.sell.btc
 					+ ' BTC</h2><p id="eurValue">' + valueInfo.sell.euro + ' EUR</p><p>EUR Sell Rate: ' + valueInfo.sell.rate + ' BTC</p>';
 				document.getElementById('eurValue').onclick = function() {
-						document.getElementById('content').innerHTML = '<h1>Conversion</h1><br><br><form action="/" method="GET">'
+						document.getElementById('content').innerHTML = '<h1>Conversion</h1><br><br><form action="./" method="GET">'
 							+ 'Value: <input type="text" name="convert" autofocus></input> EUR <button type="submit" name="action" value="sellEur">Check</button></form>';	
 				};
 			}
@@ -155,7 +155,7 @@
 		}
 		request.send();
 	} else if(param.endsWith('address')) {
-		document.getElementById('content').innerHTML = '<h1>Address info</h1><form action="/" method="GET">'
+		document.getElementById('content').innerHTML = '<h1>Address info</h1><form action="./" method="GET">'
 		+ 'Bitcoin Address: <input type="text" name="address" size="36" autofocus></input> <button type="submit">Check</button></form>';
 	} else if(param.endsWith('convert')) {
 		document.getElementById('content').innerHTML =
@@ -163,8 +163,8 @@
 		+ '<button type="submit" name="action" value="buyBtc">Buy BTC</button> <button type="submit" name="action" value="buyEur">Buy EUR</button> '
 		+ '<button type="submit" name="action" value="sellBtc">Sell BTC</button> <button type="submit" name="action" value="sellEur">Sell EUR</button>';
 	} else if(param == '') {
-		document.getElementById('content').innerHTML = '<h1>Home</h1><br><h3><a href="/?address">Bitcoin address info</a></h3><br>'
-		+ '<h3><a href="/?convert">Bitcoin conversion</a></h3><br><h3><a href="/?rates">Bitcoin rates</a></h3>';
+		document.getElementById('content').innerHTML = '<h1>Home</h1><br><h3><a href="./?address">Bitcoin address info</a></h3><br>'
+		+ '<h3><a href="/?convert">Bitcoin conversion</a></h3><br><h3><a href="./?rates">Bitcoin rates</a></h3>';
 	} else {
 		document.getElementById('content').innerHTML = '<p>Page not found.</p>';
 	}
