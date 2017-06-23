@@ -2,4 +2,4 @@
 School project:<br>
 Bitcoin info site<br>
 <br>
-<b>https://abelont.github.io</b>
+<b>https://abelont.github.io/wannabit</b>
