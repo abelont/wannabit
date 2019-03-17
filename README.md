@@ -1,5 +1,4 @@
 # wannabit
-School project:<br>
-Bitcoin info site<br>
-<br>
-<b>https://abelont.github.io/wannabit</b>
+Bitcoin info site
+
+[Open Wannabit](https://abelont.github.io/wannabit)
